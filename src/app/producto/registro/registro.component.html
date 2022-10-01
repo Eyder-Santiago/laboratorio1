@@ -1,0 +1,27 @@
+
+
+
+
+<div class="container text-center" >
+  <div class="row">
+      <div class="col"></div>
+      <div class="col border gray">
+      <h2>Registro Producto</h2>
+      <label>Nombre:</label>
+      <input type="text" class="form-control" [(ngModel)]="producto.nombre" >
+      <label>Precio:</label>
+      <input type="number" class="form-control" [(ngModel)]="producto.precio"  >
+      
+      <label>Stock:</label>
+      <input type="number" class="form-control" [(ngModel)]="producto.stock"  >
+      <label>Estado:</label>
+      <input type="number" class="form-control" [(ngModel)]="producto.estado" >
+      <br>
+      <button class="btn btn-success" (click)="agregarProducto();">Registrar</button>
+      </div>
+  <div class="col"></div>
+</div>
+
+  
+  
+ 
