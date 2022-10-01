@@ -50,7 +50,7 @@ public editarProducto(producto:Producto){
 
 eliminarProducto(producto:Producto){
   //defino la url donde esta el servicio
-  let  url ='http://localhost/tiendaservice/ProductoService.php?id='+ 1;
+  let  url ='http://localhost/tiendaservice/ProductoService.php?id='+ producto.id;
   let header=new HttpHeaders();
   header.append('Content-Type','aplication/json')
   header.append('Access-Control-Allow-Methods','"POST, GET,DELETE,PUT"')

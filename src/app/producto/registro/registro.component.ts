@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Producto } from 'src/app/modelo/producto';
 import { ProductoService } from 'src/app/servicios/producto.service';
+
 import { ListadoComponent } from '../listado/listado.component';
 
 @Component({
@@ -12,6 +13,7 @@ export class RegistroComponent implements OnInit{
 
   @Input() listar : ListadoComponent | undefined;
 
+  @Output() productoCreado = new EventEmitter<Producto>();
 
   public producto:Producto = new Producto("",0,0,0);
 
@@ -26,9 +28,8 @@ export class RegistroComponent implements OnInit{
   agregarProducto() : void{
     this.servicioProducto.crearProducto(this.producto).subscribe(resp =>{
       //una vez se envíe el objeto local se define en blanco
+      this.productoCreado.emit(this.producto);
       this.producto = new Producto("", 0, 0, 0);
-      console.log(resp);
-      this.listar?.ngOnInit();
     }
     );
   }

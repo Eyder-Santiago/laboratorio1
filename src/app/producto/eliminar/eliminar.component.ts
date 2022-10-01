@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Producto } from 'src/app/modelo/producto';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { ListadoComponent } from '../listado/listado.component';
@@ -12,12 +12,10 @@ export class EliminarComponent implements OnInit {
 
   constructor(public servicioProducto:ProductoService) { }
 
-  
-  @Input() listar : ListadoComponent | undefined;
+  @Output() productoEliminado = new EventEmitter<Producto>();
 
-  public productos:Array<Producto> = [];
-
-  @Output() producto:Producto={
+  @Input() producto:Producto={
+    id:0,
     nombre:"",
     precio:0,
     stock:0,
@@ -30,9 +28,10 @@ export class EliminarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  eliminar(index:number){
-    this.servicioProducto.eliminarProducto(this.productos[index]).subscribe(resp=>{
-      console.log(resp)
+  eliminar(){
+    this.servicioProducto.eliminarProducto(this.producto).subscribe(resp=>{
+      console.log(resp);
+      this.productoEliminado.emit(this.producto);
 
      }); 
      

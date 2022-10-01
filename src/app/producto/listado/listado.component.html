@@ -16,7 +16,8 @@
        <td>{{p.stock}}</td>
        <td>{{p.estado}}</td>
        <td><button><img src="../../../assets/icons/pencil-square.svg"></button>
-        <button><img src="../../../assets/icons/trash3-fill.svg"></button></td>
+        <app-eliminar (productoEliminado)="onProductoEliminado($event)" [producto]="p"></app-eliminar>
+        </td>
         
     </tr>
 </tbody>
