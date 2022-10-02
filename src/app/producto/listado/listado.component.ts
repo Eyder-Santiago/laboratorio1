@@ -14,6 +14,8 @@ export class ListadoComponent implements OnInit {
 
   @Output() productoEliminado = new EventEmitter<Producto>();
 
+  @Output() productoEditado = new EventEmitter<Producto>();
+
   @Input() productos:Producto[]=[];
   constructor(private servicioProducto:ProductoService) { 
 
@@ -24,6 +26,10 @@ export class ListadoComponent implements OnInit {
 
   onProductoEliminado(producto:Producto){
     this.productoEliminado.emit(producto);
+  }
+
+  onProductoEditado(producto:Producto){
+    this.productoEditado.emit(producto);
   }
 
 

@@ -32,6 +32,11 @@ export class AppComponent implements OnInit {
     console.log(producto);
   }
 
+  onProductoEditado(producto:Producto){
+    this.cargarProductos();
+    console.log(producto);
+  }
+
   ngOnInit(): void {
     this.cargarProductos();
   }

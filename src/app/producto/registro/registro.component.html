@@ -1,7 +1,4 @@
 
-
-
-
 <div class="container text-center" >
   <div class="row">
       <div class="col"></div>
@@ -17,7 +14,8 @@
       <label>Estado:</label>
       <input type="number" class="form-control" [(ngModel)]="producto.estado" >
       <br>
-      <button class="btn btn-success" (click)="agregarProducto()">Registrar</button>
+      <button class="btn btn-success" *ngIf="producto.id==0" (click)="agregarProducto()">Registrar</button>
+      <button *ngIf="producto.id>0" class="btn btn-success" (click)="modificarProducto()">Actualizar</button>
       </div>
   <div class="col"></div>
 </div>

@@ -11,11 +11,13 @@ import { ListadoComponent } from '../listado/listado.component';
 })
 export class RegistroComponent implements OnInit{
 
-  @Input() listar : ListadoComponent | undefined;
 
   @Output() productoCreado = new EventEmitter<Producto>();
+  
+  @Output() productoEditado = new EventEmitter<Producto>();
 
-  public producto:Producto = new Producto("",0,0,0);
+  @Input() producto:Producto = new Producto("",0,0,0);
+
 
 
 
@@ -33,6 +35,19 @@ export class RegistroComponent implements OnInit{
     }
     );
   }
+
+  modificarProducto() : void{
+    this.servicioProducto.editarProducto(this.producto).subscribe(resp =>{
+      //una vez se envíe el objeto local se define en blanco
+      this.productoEditado.emit(this.producto);
+      //this.producto = new Producto("", 0, 0, 0);
+    }
+    );
+
+  }
+
+  
+
 
 
 

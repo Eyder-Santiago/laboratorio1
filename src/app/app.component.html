@@ -5,9 +5,10 @@
   <br>
 </div>
 
-<app-registro [listar]="listado" (productoCreado)="onProductoCreado($event)"></app-registro>
+<app-registro (productoCreado)="onProductoCreado($event)"></app-registro>
 
 <br>
 <hr>
-<app-listado #listado [productos]="productos" (productoEliminado)="onProductoEliminado($event)" ></app-listado>
+<app-listado #listado [productos]="productos" (productoEliminado)="onProductoEliminado($event)"
+(productoEditado)="onProductoEditado($event)" ></app-listado>
 
